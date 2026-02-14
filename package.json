@@ -2,9 +2,10 @@
   "name": "learn-prisma",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && cp -r src/generated dist/",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
