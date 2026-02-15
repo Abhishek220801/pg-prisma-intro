@@ -5,8 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output = "../dist/generated/prisma"
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  runtime      = "nodejs"
+  moduleFormat = "esm"
 }
 
 datasource db {
@@ -14,17 +16,23 @@ datasource db {
 }
 
 model User {
-  id  Int   @id @default(autoincrement())
-  email String   @unique
-  firstName   String
-  lastName    String?
-  password    String
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  firstName String
+  lastName  String?
+  password  String
+  todos     Todo[]
+
+  @@map("users")
 }
 
 model Todo {
-  id      Int @id @default(autoincrement())
-  title   String
-  done    Boolean @default(false)
+  id          Int     @id @default(autoincrement())
+  title       String
+  done        Boolean @default(false)
   description String?
-  userId  Int
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+
+  @@map("todos")
 }
