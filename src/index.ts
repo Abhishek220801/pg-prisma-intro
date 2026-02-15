@@ -21,13 +21,14 @@ async function insertUser(
   });
 
   console.log(res);
-  return;
+  process.exit(0);
 }
 
-insertUser("abhi@email.com", "password", "Abhishek", "Sankhwar");
+// insertUser("abhi@email.com", "password", "Abhishek", "Sankhwar");
 
-// const fetchData = async () => {
-//   const data = await prisma.user.findMany();
-//   console.log(data);
-// };
-// fetchData();
+const fetchData = async () => {
+  const data = await prisma.user.findMany();
+  console.log(data);
+  process.exit(0);
+};
+fetchData();
