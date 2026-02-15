@@ -2,6 +2,7 @@
   "name": "learn-prisma",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/index.ts",
